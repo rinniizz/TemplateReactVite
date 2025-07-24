@@ -9,19 +9,20 @@ const ContactPage = () => {
       {/* Header */}
       <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-accent-50">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
               ติดต่อ<span className="text-gradient">เรา</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              มีคำถามหรือต้องการความช่วยเหลือ? เราพร้อมให้บริการและตอบทุกข้อสงสัยของคุณ
+            <p className="mx-auto max-w-2xl text-xl text-gray-600">
+              มีคำถามหรือต้องการความช่วยเหลือ?
+              เราพร้อมให้บริการและตอบทุกข้อสงสัยของคุณ
               ไม่ว่าจะเป็นเรื่องเทคนิคหรือการใช้งาน
             </p>
           </div>
         </div>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 section-padding">
+      <div className="section-padding grid grid-cols-1 gap-12 lg:grid-cols-2">
         <ContactInfo />
         <ContactForm />
       </div>

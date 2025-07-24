@@ -34,12 +34,14 @@
 ### การติดตั้ง
 
 1. **Clone โปรเจกต์**
+
    ```bash
    git clone https://github.com/your-username/react-vite-template.git
    cd react-vite-template
    ```
 
 2. **ติดตั้ง dependencies**
+
    ```bash
    npm install
    # หรือ
@@ -49,6 +51,7 @@
    ```
 
 3. **รันโปรเจกต์**
+
    ```bash
    npm run dev
    # หรือ
@@ -95,6 +98,7 @@ npm run type-check   # ตรวจสอบ TypeScript types
 ## 🎨 การปรับแต่ง Tailwind CSS
 
 ### สี (Colors)
+
 แก้ไขใน `tailwind.config.js`:
 
 ```javascript
@@ -113,6 +117,7 @@ theme: {
 ```
 
 ### Fonts
+
 แก้ไขใน `src/styles/globals.css`:
 
 ```css
@@ -126,16 +131,19 @@ body {
 ## 🧩 Components ที่มีให้ใช้
 
 ### Layout Components
+
 - `Header` - Navigation header พร้อม responsive menu
 - `Footer` - Footer พร้อมลิงก์และข้อมูลติดต่อ
 - `Layout` - Main layout wrapper
 
-### Section Components  
+### Section Components
+
 - `Hero` - Hero section สำหรับหน้าแรก
 - `Features` - แสดงฟีเจอร์ต่างๆ
 - `CTA` - Call-to-action section
 
 ### UI Components
+
 - `Button` - ปุ่มหลากหลายรูปแบบ
 - `Card` - การ์ดสำหรับแสดงเนื้อหา
 - `Form` - ฟอร์มและ input components
@@ -163,6 +171,7 @@ import { User } from '@types/index'
 ```
 
 Path mappings ที่มีให้ใช้:
+
 - `@/*` → `./src/*`
 - `@components/*` → `./src/components/*`
 - `@pages/*` → `./src/pages/*`
@@ -175,11 +184,13 @@ Path mappings ที่มีให้ใช้:
 ## 📝 Code Style
 
 โปรเจกต์นี้ใช้:
+
 - **ESLint** สำหรับ code linting
 - **Prettier** สำหรับ code formatting
 - **EditorConfig** สำหรับ editor settings
 
 ### การตั้งค่า VS Code
+
 สร้างไฟล์ `.vscode/settings.json`:
 
 ```json
@@ -198,7 +209,7 @@ Path mappings ที่มีให้ใช้:
 
 ```jsx
 // ใช้ dark: prefix
-<div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+<div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
   Content
 </div>
 ```
@@ -225,18 +236,21 @@ npm install framer-motion
 ## 🚀 Deployment
 
 ### Vercel
+
 ```bash
 npm run build
 vercel --prod
 ```
 
 ### Netlify
+
 ```bash
 npm run build
 # แล้ว drag & drop โฟลเดอร์ dist ใน Netlify
 ```
 
 ### GitHub Pages
+
 ```bash
 npm run build
 # ใช้ GitHub Actions หรือ push โฟลเดอร์ dist ไป gh-pages branch

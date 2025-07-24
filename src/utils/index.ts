@@ -11,7 +11,10 @@ export function cn(...inputs: ClassValue[]) {
 /**
  * Format date to readable string
  */
-export function formatDate(date: Date | string, locale: string = 'th-TH'): string {
+export function formatDate(
+  date: Date | string,
+  locale: string = 'th-TH'
+): string {
   const dateObj = typeof date === 'string' ? new Date(date) : date
   return dateObj.toLocaleDateString(locale, {
     year: 'numeric',
@@ -23,7 +26,10 @@ export function formatDate(date: Date | string, locale: string = 'th-TH'): strin
 /**
  * Format date to relative time (e.g., "2 hours ago")
  */
-export function formatRelativeTime(date: Date | string, locale: string = 'th'): string {
+export function formatRelativeTime(
+  date: Date | string,
+  locale: string = 'th'
+): string {
   const dateObj = typeof date === 'string' ? new Date(date) : date
   const now = new Date()
   const diffInSeconds = Math.floor((now.getTime() - dateObj.getTime()) / 1000)
@@ -40,7 +46,10 @@ export function formatRelativeTime(date: Date | string, locale: string = 'th'): 
   for (const [unit, seconds] of Object.entries(intervals)) {
     const interval = Math.floor(diffInSeconds / seconds)
     if (interval >= 1) {
-      return new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).format(-interval, unit as any)
+      return new Intl.RelativeTimeFormat(locale, { numeric: 'auto' }).format(
+        -interval,
+        unit as any
+      )
     }
   }
 
@@ -55,7 +64,7 @@ export function debounce<T extends (...args: any[]) => any>(
   wait: number
 ): (...args: Parameters<T>) => void {
   let timeout: number | null = null
-  
+
   return (...args: Parameters<T>) => {
     if (timeout) clearTimeout(timeout)
     timeout = setTimeout(() => func(...args), wait)
@@ -70,7 +79,7 @@ export function throttle<T extends (...args: any[]) => any>(
   limit: number
 ): (...args: Parameters<T>) => void {
   let inThrottle: boolean = false
-  
+
   return (...args: Parameters<T>) => {
     if (!inThrottle) {
       func(...args)
@@ -188,11 +197,11 @@ export function getFileExtension(filename: string): string {
  */
 export function formatFileSize(bytes: number): string {
   if (bytes === 0) return '0 Bytes'
-  
+
   const k = 1024
   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
   const i = Math.floor(Math.log(bytes) / Math.log(k))
-  
+
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
 }
 
@@ -237,7 +246,7 @@ export function stringToColor(str: string): string {
   for (let i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash)
   }
-  
+
   const hue = Math.abs(hash) % 360
   return `hsl(${hue}, 70%, 60%)`
 }

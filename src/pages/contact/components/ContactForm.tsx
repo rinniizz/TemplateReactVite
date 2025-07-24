@@ -7,7 +7,7 @@ const ContactForm = () => {
     email: '',
     subject: '',
     category: '',
-    message: ''
+    message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -16,13 +16,17 @@ const ContactForm = () => {
     { value: 'technical', label: 'ปัญหาเทคนิค' },
     { value: 'feature', label: 'แนะนำฟีเจอร์' },
     { value: 'bug', label: 'รายงานข้อผิดพลาด' },
-    { value: 'partnership', label: 'ความร่วมมือ' }
+    { value: 'partnership', label: 'ความร่วมมือ' },
   ]
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
@@ -30,14 +34,20 @@ const ContactForm = () => {
     e.preventDefault()
     console.log('Form submit triggered!', formData)
     setIsSubmitting(true)
-    
+
     try {
       // จำลองการส่งข้อมูล
       await new Promise(resolve => setTimeout(resolve, 2000))
       console.log('Form submitted successfully:', formData)
-      
+
       // รีเซ็ตฟอร์ม
-      setFormData({ name: '', email: '', subject: '', category: '', message: '' })
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        category: '',
+        message: '',
+      })
       alert('ส่งข้อความเรียบร้อยแล้ว! เราจะติดต่อกลับภายใน 24 ชั่วโมง')
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -48,18 +58,21 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="container-custom animate-slide-in" style={{ animationDelay: '0.1s' }}>
+    <div
+      className="container-custom animate-slide-in"
+      style={{ animationDelay: '0.1s' }}
+    >
       <div className="card h-full">
         <div className="card-body">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="mb-6 text-2xl font-bold text-gray-900">
             ✉️ ส่งข้อความถึงเรา
           </h2>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="form-group">
                 <label htmlFor="name" className="form-label flex items-center">
-                  <FiUser className="w-4 h-4 mr-2" />
+                  <FiUser className="mr-2 h-4 w-4" />
                   ชื่อ-นามสกุล *
                 </label>
                 <input
@@ -73,10 +86,10 @@ const ContactForm = () => {
                   required
                 />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="email" className="form-label flex items-center">
-                  <FiMail className="w-4 h-4 mr-2" />
+                  <FiMail className="mr-2 h-4 w-4" />
                   อีเมล *
                 </label>
                 <input
@@ -93,8 +106,11 @@ const ContactForm = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="category" className="form-label flex items-center">
-                <FiTag className="w-4 h-4 mr-2" />
+              <label
+                htmlFor="category"
+                className="form-label flex items-center"
+              >
+                <FiTag className="mr-2 h-4 w-4" />
                 หมวดหมู่ *
               </label>
               <select
@@ -106,7 +122,7 @@ const ContactForm = () => {
                 required
               >
                 <option value="">เลือกหมวดหมู่</option>
-                {categories.map((category) => (
+                {categories.map(category => (
                   <option key={category.value} value={category.value}>
                     {category.label}
                   </option>
@@ -116,7 +132,7 @@ const ContactForm = () => {
 
             <div className="form-group">
               <label htmlFor="subject" className="form-label flex items-center">
-                <FiMessageSquare className="w-4 h-4 mr-2" />
+                <FiMessageSquare className="mr-2 h-4 w-4" />
                 หัวข้อ *
               </label>
               <input
@@ -150,7 +166,7 @@ const ContactForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full btn btn-primary btn-lg flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn btn-primary btn-lg flex w-full items-center justify-center space-x-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
@@ -159,22 +175,24 @@ const ContactForm = () => {
                 </>
               ) : (
                 <>
-                  <FiSend className="w-5 h-5" />
+                  <FiSend className="h-5 w-5" />
                   <span>ส่งข้อความ</span>
                 </>
               )}
             </button>
           </form>
 
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <div className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4">
             <div className="flex items-start space-x-3">
-              <span className="text-blue-600 text-xl">ℹ️</span>
+              <span className="text-xl text-blue-600">ℹ️</span>
               <div>
-                <h4 className="font-semibold text-blue-800 mb-1">หมายเหตุ</h4>
-                <ul className="text-sm text-blue-700 space-y-1">
+                <h4 className="mb-1 font-semibold text-blue-800">หมายเหตุ</h4>
+                <ul className="space-y-1 text-sm text-blue-700">
                   <li>• เราจะตอบกลับภายใน 24 ชั่วโมงในวันทำการ</li>
                   <li>• สำหรับปัญหาเร่งด่วน แนะนำให้ติดต่อทาง Discord</li>
-                  <li>• กรุณาระบุรายละเอียดให้ชัดเจนเพื่อการช่วยเหลือที่รวดเร็ว</li>
+                  <li>
+                    • กรุณาระบุรายละเอียดให้ชัดเจนเพื่อการช่วยเหลือที่รวดเร็ว
+                  </li>
                 </ul>
               </div>
             </div>
