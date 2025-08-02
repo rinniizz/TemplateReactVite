@@ -7,12 +7,7 @@ const Hero = () => {
       <div className="container-custom">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <div className="mb-6 inline-flex animate-bounce-in items-center rounded-full border border-primary-200 bg-white px-4 py-2 shadow-sm">
-            <span className="mr-2 h-2 w-2 rounded-full bg-green-500"></span>
-            <span className="text-sm font-medium text-gray-700">
-              🚀 React + Vite + Tailwind Ready!
-            </span>
-          </div>
+
 
           {/* Main Heading */}
           <h1 className="mb-6 animate-fade-in text-4xl font-bold text-gray-900 md:text-6xl lg:text-7xl">
