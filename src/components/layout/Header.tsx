@@ -52,15 +52,18 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden items-center space-x-4 md:flex">
-            <button
+            <Link
+              to="/login"
               className="btn btn-outline btn-sm"
               onClick={() => {
                 console.log('Login button clicked!')
-                alert('ระบบเข้าสู่ระบบกำลังพัฒนา')
+
               }}
+
             >
+
               เข้าสู่ระบบ
-            </button>
+            </Link>
             <button
               className="btn btn-primary btn-sm"
               onClick={() => {

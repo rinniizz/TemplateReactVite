@@ -1,13 +1,42 @@
-import { Link } from 'react-router-dom'
-import { FiArrowRight, FiPlay } from 'react-icons/fi'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiArrowRight, FiPlay } from 'react-icons/fi';
+
+const getThaiGreeting = () => {
+  const now = new Date();
+  // เปลี่ยนเป็นเวลาไทย UTC+7
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const thaiTime = new Date(utc + 7 * 3600000);
+  const hour = thaiTime.getHours();
+
+  if (hour >= 5 && hour < 12) return 'สวัสดียามเช้า';
+  if (hour >= 12 && hour < 17) return 'สวัสดียามบ่าย';
+  if (hour >= 17 && hour < 21) return 'สวัสดียามเย็น';
+  return 'สวัสดียามดึก';
+};
 
 const Hero = () => {
+  const [greeting, setGreeting] = useState<string>('');
+
+  useEffect(() => {
+    setGreeting(getThaiGreeting());
+
+    // อัปเดต greeting ทุกชั่วโมง เผื่อเวลาเปลี่ยน
+    const interval = setInterval(() => {
+      setGreeting(getThaiGreeting());
+    }, 3600000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-accent-50">
       <div className="container-custom">
         <div className="mx-auto max-w-4xl text-center">
-          {/* Badge */}
-
+          {/* Greeting */}
+          <h2 className="mb-4 animate-fade-in text-3xl font-semibold text-gray-700 md:text-4xl">
+            {greeting}
+          </h2>
 
           {/* Main Heading */}
           <h1 className="mb-6 animate-fade-in text-4xl font-bold text-gray-900 md:text-6xl lg:text-7xl">
@@ -85,46 +114,12 @@ const Hero = () => {
             className="mt-16 animate-fade-in"
             style={{ animationDelay: '0.6s' }}
           >
-            <p className="mb-6 text-sm font-medium text-gray-500">POWERED BY</p>
-            <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
-              <div className="flex items-center space-x-2">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                  alt="React"
-                  className="h-8 w-8"
-                />
-                <span className="font-medium text-gray-700">React</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <img
-                  src="https://vitejs.dev/logo.svg"
-                  alt="Vite"
-                  className="h-8 w-8"
-                />
-                <span className="font-medium text-gray-700">Vite</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                  alt="TypeScript"
-                  className="h-8 w-8"
-                />
-                <span className="font-medium text-gray-700">TypeScript</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
-                  alt="Tailwind CSS"
-                  className="h-8 w-8"
-                />
-                <span className="font-medium text-gray-700">Tailwind</span>
-              </div>
-            </div>
+            {/* ว่างไว้หรือใส่ข้อมูลเพิ่มเติมได้ */}
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

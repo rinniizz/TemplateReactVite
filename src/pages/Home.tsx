@@ -7,7 +7,7 @@ const Home = () => {
     <div className="animate-fade-in">
       <Hero />
      <div className="min-h-screen bg-gray-100">
-      <h1 className="text-3xl font-bold text-center py-10">สินค้าแนะนำ</h1>
+      <h1 className="text-3xl font-bold text-center py-10">รายการสินค้า</h1>
       <ProductList />
     </div>
       <CTA />

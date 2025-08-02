@@ -11,8 +11,7 @@ type ProductCardProps = {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="relative flex w-80 flex-col rounded-xl bg-white text-gray-700 shadow-md">
-      <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 shadow-lg">
+<div className="card card-hover animate-slide-in relative flex flex-col rounded-xl bg-white text-gray-700 shadow-md transition-transform duration-300 w-full">      <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 shadow-lg">
         {product.image && (
           <img
             src={product.image}
