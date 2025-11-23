@@ -64,15 +64,6 @@ const Header = () => {
 
               เข้าสู่ระบบ
             </Link>
-            <button
-              className="btn btn-primary btn-sm"
-              onClick={() => {
-                console.log('Register button clicked!')
-                alert('ระบบสมัครสมาชิกกำลังพัฒนา')
-              }}
-            >
-              สมัครสมาชิก
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,16 +111,6 @@ const Header = () => {
                   }}
                 >
                   เข้าสู่ระบบ
-                </button>
-                <button
-                  className="btn btn-primary btn-md w-full"
-                  onClick={() => {
-                    setIsMenuOpen(false)
-                    console.log('Mobile register button clicked!')
-                    alert('ระบบสมัครสมาชิกกำลังพัฒนา')
-                  }}
-                >
-                  สมัครสมาชิก
                 </button>
               </div>
             </nav>

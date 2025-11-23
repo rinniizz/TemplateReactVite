@@ -15,7 +15,7 @@ const Footer = () => {
                   <span className="text-sm font-bold text-white">R</span>
                 </div>
                 <span className="text-gradient text-xl font-bold">
-                  React Template1
+                  React Template
                 </span>
               </div>
               <p className="mb-4 max-w-md text-gray-600">
